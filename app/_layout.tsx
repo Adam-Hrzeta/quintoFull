@@ -7,7 +7,7 @@ import 'react-native-reanimated';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
-import { AntDesign, Entypo, FontAwesome6, Ionicons, Octicons } from '@expo/vector-icons'; // Import AntDesign
+import { AntDesign, Entypo, FontAwesome6, Ionicons, MaterialIcons, Octicons } from '@expo/vector-icons'; // Import AntDesign
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -79,6 +79,16 @@ export default function RootLayout() {
               title: 'Permisos en la aplicación',
               drawerIcon: ({ color, size }) => (
                 <Ionicons name="shield-checkmark-outline" size={size} color={color}/>
+              ),
+            }}
+          />
+          <Drawer.Screen
+            name="(notes)" 
+            options={{
+              drawerLabel: 'Notas',
+              title: 'Notas Supabase',
+              drawerIcon: ({ color, size }) => (
+                <MaterialIcons name="notes" size={24} color="black" />
               ),
             }}
           />
