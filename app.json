@@ -9,33 +9,92 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Requerimos acceso a la camara para que subas tu imagen de perfil.",
+        "NSMicrophoneUsageDescription": "Requerimos acceso a el microfono para grabar notas de voz",
+        "NSLocationUsageDescription": "Requerimos acceso a la ubicación",
+        "NSContactsUsageDescription": "Requerimos el acceso a tu lista de contactos",
+        "NSCalendarsFullAccessUsageDescription": "Requerimos acceso al calendario"
+      },
+      "android": {
+        "adaptiveIcon": {
+          "foregroundImage": "./assets/images/adaptive-icon.png",
+          "backgroundColor": "#ffffff"
+        },
+        "permissions": [
+          "android.permission.CAMERA",
+          "android.permission.FOREGROUND_SERVICE_MICROPHONE",
+          "android.permission.ACCESS_FINE_LOCATION",
+          "android.permission.READ_CONTACTS",
+          "android.permission.READ_CALENDAR"
+        ]
+      },
+      "web": {
+        "bundler": "metro",
+        "output": "static",
+        "favicon": "./assets/images/favicon.png"
+      },
+      "plugins": [
+        "expo-router",
+        [
+          "expo-splash-screen",
+          {
+            "image": "./assets/images/splash-icon.png",
+            "imageWidth": 200,
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+          }
+        ],
+        [
+          "expo-camera",
+          {
+            "cameraPermission": "Requerimos acceso a la camara para que subas tu imagen de perfil.",
+            "microphonePermission": "Requerimos acceso a el microfono para grabar notas de voz",
+            "recordAudioAndroid": true
+          }
+        ],
+        [
+          "expo-location",
+          {
+            "locationAlwaysAndWhenInUsePermission": "Requerimos acceso a la ubicación"
+          }
+        ],
+        [
+          "expo-contacts",
+          {
+            "contactsPermission": "Requerimos el acceso a tu lista de contactos"
+          }
+        ],
+        [
+          "expo-calendar",
+          {
+            "calendarPermission": "The app needs to access your calendar."
+          }
+        ],
+        [
+          "expo-media-library",
+          {
+            "photosPermission": "Allow $(PRODUCT_NAME) to access your photos.",
+            "savePhotosPermission": "Allow $(PRODUCT_NAME) to save photos.",
+            "isAccessMediaLocationEnabled": true
+          }
+        ],
+        [
+          "expo-image-picker",
+          {
+            "photosPermission": "Solicitamos el acceso a tu galeria para que puedas seleccionar tu foto de perfil."
+          }
+        ],
+        "expo-secure-store"
+      ],
+      "experiments": {
+        "typedRoutes": true
       }
     },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
     "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
-        }
-      ]
-    ],
-    "experiments": {
-      "typedRoutes": true
-    }
+      "expo-font",
+      "expo-router"
+    ]
   }
 }
