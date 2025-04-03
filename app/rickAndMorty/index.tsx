@@ -13,27 +13,27 @@ export default function Index() {
         }}
         style={styles.profileImage}
       />
-      <Text style={styles.title}>Rick and Morty App</Text>
+      <Text style={styles.title}>Rick and Morty</Text>
       <Text style={styles.subtitle}>¡Explora el consumo de mí API!</Text>
 
       <View style={styles.containerbuttons}>
         <TouchableOpacity
           style={styles.button1}
-          onPress={() => router.push("/(characters)")}
+          onPress={() => router.push("/rickAndMorty/characters")}
         >
           <Text style={styles.buttonText}>Personajes</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.button2}
-          onPress={() => router.push("/(episodes)")}
+          onPress={() => router.push("/rickAndMorty/episodes")}
         >
           <Text style={styles.buttonText}>Episodios</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.button3}
-          onPress={() => router.push("/(locations)")}
+          onPress={() => router.push("/rickAndMorty/locations")}
         >
           <Text style={styles.buttonText}>Ubicaciones</Text>
         </TouchableOpacity>
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     width: "100%",
-    marginLeft: "5%",
     alignItems: "center",
     alignContent: "center",
     justifyContent: "center",
@@ -105,7 +104,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   button4: {
-    backgroundColor: "black",
+    backgroundColor: "blue",
     paddingVertical: 15,
     borderRadius: 12,
     marginVertical: 10,

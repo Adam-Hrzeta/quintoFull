@@ -11,9 +11,9 @@ export default function About() {
         />
         <Text style={styles.name}>Adam Michel Zárate Hernández</Text>
         <Text style={styles.text}>Universidad Tecnológica de Izúcar de Matamoros</Text>
-        <Text style={styles.text}>Materia: Desarrollo de Aplicaciones Multiplataforma</Text>
+        <Text style={styles.text}>Materia: Desarrollo Móvil Multiplataforma</Text>
         <Text style={styles.text}>Docente: Alfonso Felipe Lima Cortes</Text>
-        <Text style={styles.text}>Ultima Actualizacion: 30 de enero de 2025</Text>
+        <Text style={styles.text}>Ultima Actualizacion: 08 de abril de 2025</Text>
       </View>
     </View>
   );

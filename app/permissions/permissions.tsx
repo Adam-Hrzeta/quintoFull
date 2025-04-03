@@ -1,5 +1,5 @@
 import { PermissionView } from "@/components/permissions/permissionsView";
 
-export default function Index() {
+export default function Permissions() {
     return(<PermissionView/>)
 }

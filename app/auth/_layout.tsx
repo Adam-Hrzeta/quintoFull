@@ -24,7 +24,14 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Permissions',
+          title: 'Inicio de sesión',
+          tabBarIcon: ({ color }) => <AntDesign name="addusergroup" size={24} color="black" />,
+        }}
+      />
+      <Tabs.Screen
+        name="register"
+        options={{
+          title: 'Registro de usuario',
           tabBarIcon: ({ color }) => <AntDesign name="addusergroup" size={24} color="black" />,
         }}
       />

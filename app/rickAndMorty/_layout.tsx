@@ -32,21 +32,21 @@ export default function TabLayout() {
         }}
       />    
       <Tabs.Screen
-        name="(locations)"
+        name="locations"
         options={{
           title: 'Locations',
           tabBarIcon: ({ color }) => <Entypo name="location" size={24} color={color} />,
         }}
       />     
       <Tabs.Screen
-        name="(characters)"
+        name="characters"
         options={{
           title: 'Characters',
           tabBarIcon: ({ color }) => <FontAwesome name="users" size={24} color={color} />,
         }}
       />    
       <Tabs.Screen
-        name="(episodes)"
+        name="episodes"
         options={{
           title: 'Episodes',
           tabBarIcon: ({ color }) => <MaterialIcons name="tv" size={24} color={color} />,

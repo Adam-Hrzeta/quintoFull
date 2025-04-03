@@ -13,12 +13,12 @@ import {
 import { useRouter } from "expo-router";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../../lib/firebase";
-import { Ionicons } from "@expo/vector-icons"; // Importar el icono
+import { Ionicons } from "@expo/vector-icons";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
   const handleLogin = async () => {
@@ -27,7 +27,7 @@ const LoginScreen = () => {
       const user = userCredential.user;
 
       if (user.emailVerified) {
-        router.push("/(API)");
+        router.push("/rickAndMorty");
       } else {
         Alert.alert(
           "Correo no verificado",
@@ -44,19 +44,21 @@ const LoginScreen = () => {
   return (
     <ImageBackground
       source={{
-        uri: "https://static.vecteezy.com/system/resources/previews/025/515/340/original/parking-top-view-garage-floor-with-cars-from-above-city-parking-lot-with-free-space-cartoon-street-carpark-with-various-vehicles-illustration-vector.jpg",
+        uri: "https://oem.com.mx/elsoldepuebla/img/21175663/1737050982/BASE_LANDSCAPE/480/WhatsApp%20Image%202025-01-16%20at%205.00.37%20PM.webp",
       }}
       style={styles.background}
-      blurRadius={10}
+      blurRadius={3}
     >
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
       >
         <View style={styles.formContainer}>
-          <Text style={styles.title}>Inicio de Sesión</Text>
+          <View style={styles.logoContainer}>
+            <Text style={styles.title}>Inicio de sesión</Text>
+            <Text style={styles.subtitle}>Inicie sesión para acceder a los modulos</Text>
+          </View>
 
-          {/* Campo Correo Electrónico */}
           <TextInput
             style={styles.input}
             placeholder="Correo electrónico"
@@ -64,40 +66,37 @@ const LoginScreen = () => {
             onChangeText={setEmail}
             keyboardType="email-address"
             autoCapitalize="none"
-            placeholderTextColor="#B39DDB"
+            placeholderTextColor="#999"
           />
 
-          {/* Campo Contraseña con icono de ojo */}
           <View style={styles.passwordContainer}>
             <TextInput
               style={styles.passwordInput}
               placeholder="Contraseña"
               value={password}
               onChangeText={setPassword}
-              secureTextEntry={!showPassword} // Alternar entre texto seguro y no seguro
-              placeholderTextColor="#B39DDB"
+              secureTextEntry={!showPassword}
+              placeholderTextColor="#999"
             />
             <TouchableOpacity
               style={styles.eyeIcon}
-              onPress={() => setShowPassword(!showPassword)} // Alternar la visibilidad
+              onPress={() => setShowPassword(!showPassword)}
             >
               <Ionicons
-                name={showPassword ? "eye-off" : "eye"} // Cambiar el icono según el estado
+                name={showPassword ? "eye-off" : "eye"}
                 size={24}
-                color="#B39DDB"
+                color="#666"
               />
             </TouchableOpacity>
           </View>
 
-          {/* Botón Iniciar Sesión */}
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>Iniciar Sesión</Text>
           </TouchableOpacity>
 
-          {/* Botón Registrarse (solo texto) */}
           <TouchableOpacity
             style={styles.registerButton}
-            onPress={() => router.push("/(auth)/register")}
+            onPress={() => router.push("/auth/register")}
           >
             <Text style={styles.registerButtonText}>
               ¿No tienes cuenta? Regístrate
@@ -121,50 +120,72 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   formContainer: {
-    width: "80%",
-    backgroundColor: "rgba(46, 39, 57, 0.8)",
+    width: "85%",
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
     padding: 25,
     borderRadius: 15,
     borderWidth: 1,
-    borderColor: "rgba(255, 255, 255, 0.2)",
+    borderColor: "rgba(0, 0, 0, 0.1)",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 5,
+  },
+  logoContainer: {
+    alignItems: "center",
+    marginBottom: 30,
   },
   title: {
-    fontSize: 24,
+    fontSize: 36,
     fontWeight: "bold",
+    color: "#003366", // Azul oscuro UTM
+    marginBottom: 5,
+  },
+  subtitle: {
+    fontSize: 14,
+    color: "#666",
     textAlign: "center",
-    color: "#FFF",
-    marginBottom: 20,
   },
   input: {
-    height: 40,
-    borderBottomColor: "#7E57C2",
-    borderBottomWidth: 1,
+    height: 45,
+    borderColor: "#003366",
+    borderWidth: 1,
     marginBottom: 20,
-    paddingLeft: 8,
-    color: "#FFF",
+    paddingLeft: 15,
+    color: "#333",
+    borderRadius: 8,
+    backgroundColor: "rgba(255, 255, 255, 0.8)",
   },
   passwordContainer: {
     flexDirection: "row",
     alignItems: "center",
-    borderBottomColor: "#7E57C2",
-    borderBottomWidth: 1,
+    borderColor: "#003366",
+    borderWidth: 1,
     marginBottom: 20,
+    borderRadius: 8,
+    backgroundColor: "rgba(255, 255, 255, 0.8)",
   },
   passwordInput: {
     flex: 1,
-    height: 40,
-    paddingLeft: 8,
-    color: "#FFF",
+    height: 45,
+    paddingLeft: 15,
+    color: "#333",
   },
   eyeIcon: {
     padding: 10,
   },
   button: {
-    backgroundColor: "#7E57C2",
-    paddingVertical: 12,
-    borderRadius: 25,
+    backgroundColor: "#003366", // Azul UTM
+    paddingVertical: 14,
+    borderRadius: 8,
     alignItems: "center",
     marginBottom: 15,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 3,
   },
   buttonText: {
     color: "#FFF",
@@ -175,7 +196,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   registerButtonText: {
-    color: "#7E57C2",
+    color: "#003366",
     fontSize: 14,
     fontWeight: "bold",
   },

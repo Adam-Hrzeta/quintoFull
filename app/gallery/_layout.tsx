@@ -5,7 +5,7 @@ import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { AntDesign, Fontisto, Ionicons, Octicons, SimpleLineIcons } from '@expo/vector-icons';
+import { AntDesign, Fontisto, Octicons, SimpleLineIcons } from '@expo/vector-icons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -22,17 +22,10 @@ export default function TabLayout() {
         },
       }}>
       <Tabs.Screen
-        name="index"
+        name="gallery"
         options={{
-          title: 'location',
-          tabBarIcon: ({ color }) => <Ionicons name="location-outline" size={24} color="black" />,
-        }}
-      />
-      <Tabs.Screen
-        name="(locationApp)"
-        options={{
-          title: 'Marcadores',
-          tabBarIcon: ({ color }) => <Ionicons name="location-outline" size={24} color="black" />,
+          title: 'Galería',
+          tabBarIcon: ({ color }) => <AntDesign name="addusergroup" size={24} color="black" />,
         }}
       />
     </Tabs>

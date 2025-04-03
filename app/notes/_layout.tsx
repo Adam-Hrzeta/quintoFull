@@ -28,9 +28,9 @@ export default function TabLayout() {
         }),
       }}>
       <Tabs.Screen
-        name="index"
+        name="notes"
         options={{
-          title: 'Home',
+          title: 'Notas',
           tabBarIcon: ({ color }) => <MaterialIcons name="notes" size={24} color="black" />,
           tabBarStyle: {
           display: 'none', // Oculta la barra de pestañas en todas las pantallas

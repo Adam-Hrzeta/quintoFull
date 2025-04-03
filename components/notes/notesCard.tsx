@@ -1,8 +1,15 @@
+// notesCard.tsx
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Note } from "./note";  
 
-export default function NotesCard({ data, onDelete }: { data: Note, onDelete: () => void }) {
+type NotesCardProps = {
+  data: Note;
+  onDelete: () => void;
+  onEdit: () => void;
+};
+
+export default function NotesCard({ data, onDelete, onEdit }: NotesCardProps) {
     return (
         <View style={styles.notesCard}>
             <View style={styles.recipeIconContainer}>
@@ -14,7 +21,14 @@ export default function NotesCard({ data, onDelete }: { data: Note, onDelete: ()
             </View>
 
             <View style={styles.actionsContainer}>
-                <TouchableOpacity onPress={onDelete}>
+                <TouchableOpacity onPress={onEdit} style={styles.actionButton}>
+                    <MaterialCommunityIcons 
+                        name="pencil" 
+                        size={30} 
+                        color="#2196F3" 
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={onDelete} style={styles.actionButton}>
                     <MaterialCommunityIcons 
                         name="close-circle" 
                         size={30} 
@@ -65,5 +79,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginLeft: 10, 
+    },
+    actionButton: {
+        marginHorizontal: 5,
     },
 });

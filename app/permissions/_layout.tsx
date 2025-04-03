@@ -22,9 +22,9 @@ export default function TabLayout() {
         },
       }}>
       <Tabs.Screen
-        name="register"
+        name="permissions"
         options={{
-          title: 'Registro',
+          title: 'Permisos',
           tabBarIcon: ({ color }) => <AntDesign name="addusergroup" size={24} color="black" />,
         }}
       />

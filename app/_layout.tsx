@@ -2,31 +2,71 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import 'react-native-reanimated';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
-import { AntDesign, Entypo, FontAwesome6, Ionicons, MaterialIcons, Octicons } from '@expo/vector-icons'; // Import AntDesign
+import { AntDesign, Ionicons, MaterialIcons} from '@expo/vector-icons'; // Import AntDesign
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loaded] = useFonts({SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),});
+  const auth = getAuth();
   const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+console.log(isLoggedIn);
+
+  useEffect(() => {
+    // Verificar si hay una sesión guardada
+    checkStoredSession();
+
+    // Suscribirse a cambios en el estado de autenticación
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        // Guardar la sesión
+        await AsyncStorage.setItem('userSession', JSON.stringify({
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName
+        }));
+        setIsLoggedIn(true);
+      } else {
+        // Eliminar la sesión guardada
+        await AsyncStorage.removeItem('userSession');
+        setIsLoggedIn(false);
+
+        // mostrar login
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const checkStoredSession = async () => {
+    try {
+      const session = await AsyncStorage.getItem('userSession');
+      if (session) {
+        const userData = JSON.parse(session);
+        setIsLoggedIn(true);
+      }
+    } catch (error) {
+      console.error('Error al verificar la sesión guardada:', error);
+    }
+  };
 
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
     }
-  }, [loaded]);
-
+    }, [loaded]
+  );
   if (!loaded) {
-    return null;
-  }
+    return null;}
+
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
@@ -35,65 +75,72 @@ export default function RootLayout() {
           <Drawer.Screen
             name="index" // This is the name of the page and must match the url from root
             options={{
-              drawerLabel: 'Inicio de sesión',
-              title: 'Inicio de sesión',
+              drawerLabel: 'Home',
+              title: 'Credenciales',
               drawerIcon: ({ color, size }) => (
                 <AntDesign name="home" size={24} color="black" />
               ),
+              drawerItemStyle: isLoggedIn ? { display: "none" } : {},
+
             }}
           />
           <Drawer.Screen
-            name="(API)" 
+            name="rickAndMorty" 
             options={{
-              drawerLabel: 'API',
-              title: 'API',
+              drawerLabel: 'Rick and Morty',
+              title: 'Rick and Morty',
               drawerIcon: ({ color, size }) => (
                 <Ionicons name="code-slash" size={size} color={color} />
               ),
+              drawerItemStyle: isLoggedIn ? {} : { display: "none" },
             }}
           />
           <Drawer.Screen
-            name="(gallery)" 
+            name="gallery" 
             options={{
-              drawerLabel: 'Galeria',
-              title: 'Galeria',
+              drawerLabel: 'Galería',
+              title: 'Galería',
               drawerIcon: ({ color, size }) => (
                 <Ionicons name="camera-outline" size={size} color={color} />
               ),
+              drawerItemStyle: isLoggedIn ? {} : { display: "none" },
             }}
           />
           <Drawer.Screen
-            name="(location)" 
+            name="location" 
             options={{
               drawerLabel: 'Ubicación',
               title: 'Ubicación',
               drawerIcon: ({ color, size }) => (
                 <Ionicons name="location" size={size} color={color} />
               ),
+              drawerItemStyle: isLoggedIn ? {} : { display: "none" },
             }}
           />
           <Drawer.Screen
-            name="(permissions)" 
+            name="permissions" 
             options={{
               drawerLabel: 'Permisos',
               title: 'Permisos en la aplicación',
               drawerIcon: ({ color, size }) => (
                 <Ionicons name="shield-checkmark-outline" size={size} color={color}/>
               ),
+              drawerItemStyle: isLoggedIn ? {} : { display: "none" },
             }}
           />
           <Drawer.Screen
-            name="(notes)" 
+            name="notes" 
             options={{
               drawerLabel: 'Notas',
               title: 'Notas Supabase',
               drawerIcon: ({ color, size }) => (
                 <MaterialIcons name="notes" size={24} color="black" />
               ),
+              drawerItemStyle: isLoggedIn ? {} : { display: "none" },
             }}
           />
           <Drawer.Screen
-            name="(auth)" 
+            name="auth" 
             options={{
               drawerItemStyle: { display: "none" },
               title: 'Registro de usuario',
@@ -107,6 +154,7 @@ export default function RootLayout() {
               drawerIcon: ({ color, size }) => (
                 <AntDesign name="user" size={size} color={color} />
               ),
+              drawerItemStyle: isLoggedIn ? {} : { display: "none" },
             }}
           />
           <Drawer.Screen
