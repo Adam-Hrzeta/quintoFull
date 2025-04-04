@@ -22,7 +22,7 @@ export default function TabLayout() {
         },
       }}>
       <Tabs.Screen
-        name="location"
+        name="locationScreen"
         options={{
           title: 'location',
           tabBarIcon: ({ color }) => <Ionicons name="location-outline" size={24} color="black" />,

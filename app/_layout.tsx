@@ -10,6 +10,8 @@ import { Drawer } from 'expo-router/drawer';
 import { AntDesign, Ionicons, MaterialIcons} from '@expo/vector-icons'; // Import AntDesign
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from 'expo-router';
+
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -57,6 +59,13 @@ console.log(isLoggedIn);
       console.error('Error al verificar la sesión guardada:', error);
     }
   };
+
+  useEffect(() => {
+  if (isLoggedIn && loaded) {
+    router.replace('/rickAndMorty'); // o la ruta que desees como pantalla inicial
+  }
+  }, [isLoggedIn, loaded]);
+
 
   useEffect(() => {
     if (loaded) {

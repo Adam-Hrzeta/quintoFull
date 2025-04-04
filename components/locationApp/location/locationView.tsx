@@ -114,7 +114,7 @@ export function LocationView() {
             <View style={styles.button}>
                 <Button
                     title="Historial"	
-                    onPress={() => router.push("./history")}
+                    onPress={() => router.push("./locationApp/history")}
                 />
             </View>
         </View>

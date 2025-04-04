@@ -1,11 +1,10 @@
 //creamos nuevo archivo
 //index.tsx
-
-import { CharactersView } from "@/components/characters/charactersView";
+import { CharactersScrollView } from "@/components/rickAndMorty/characters/charactersScrollView";
 
 //para la pantalla de personajes
 export default function Characters(){
     return(
-        <CharactersView />
+        <CharactersScrollView />
     );
 }
