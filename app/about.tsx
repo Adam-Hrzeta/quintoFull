@@ -1,64 +1,167 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Linking } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import * as Animatable from "react-native-animatable";
+
+type SocialLink = {
+  name: string;
+  icon: "logo-github" | "logo-linkedin" | "mail";
+  url: string;
+};
+
+const about_image = require("../assets/images/about_image.jpg");
+
+const socialLinks: SocialLink[] = [
+  { name: "github", icon: "logo-github", url: "https://github.com/tu-usuario" },
+  { name: "linkedin", icon: "logo-linkedin", url: "https://linkedin.com/in/tu-usuario" },
+  { name: "email", icon: "mail", url: "mailto:tu@email.com" },
+];
 
 export default function About() {
+  const handleSocialPress = (url: string): void => {
+    Linking.canOpenURL(url).then(supported => {
+      if (supported) {
+        Linking.openURL(url);
+      }
+    });
+  };
+
   return (
-    <View style={styles.container}>
-      <View style={styles.card}>
-        <Image
-          source={{ uri: "https://scontent.fpbc2-2.fna.fbcdn.net/v/t39.30808-6/277781378_308546241360563_8116681931907110870_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeG3kq49zannWXdFWVXAH96S1zKHkvoaiEPXMoeS-hqIQ5MzAvknLmbZwcrFOXgY59MT9QLno6b9icuucp54026q&_nc_ohc=WU7wa_PR0SsQ7kNvgEJdRFq&_nc_zt=23&_nc_ht=scontent.fpbc2-2.fna&_nc_gid=AxfqZt2pLNTkvIqmGIVhc9s&oh=00_AYBulULYl8FLDz5TYtZOlrMDUmEOgdltht1JD5hPGbGRrw&oe=679EF79E" }} 
-          style={styles.profileImage}
-        />
-        <Text style={styles.name}>Adam Michel Zárate Hernández</Text>
-        <Text style={styles.text}>Universidad Tecnológica de Izúcar de Matamoros</Text>
-        <Text style={styles.text}>Materia: Desarrollo Móvil Multiplataforma</Text>
-        <Text style={styles.text}>Docente: Alfonso Felipe Lima Cortes</Text>
-        <Text style={styles.text}>Ultima Actualizacion: 08 de abril de 2025</Text>
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <View style={styles.container}>
+        <Animatable.View 
+          animation="fadeInUp"
+          duration={1000}
+          style={styles.card}
+        >
+          <Animatable.Image
+            animation="pulse"
+            iterationCount="infinite"
+            direction="alternate"
+            duration={2000}
+            source={about_image}
+            style={styles.profileImage}
+          />
+          
+          <Text style={styles.name}>Adam Michel Zárate Hernández</Text>
+          
+          <View style={styles.socialContainer}>
+            {socialLinks.map((social, index) => (
+              <TouchableOpacity 
+                key={index}
+                onPress={() => handleSocialPress(social.url)}
+                style={styles.socialButton}
+              >
+                <Ionicons name={social.icon} size={24} color="#FFF" />
+              </TouchableOpacity>
+            ))}
+          </View>
+          
+          <View style={styles.infoContainer}>
+            <View style={styles.infoItem}>
+              <Ionicons name="school" size={20} color="#8A2BE2" />
+              <Text style={styles.text}>Universidad Tecnológica de Izúcar de Matamoros</Text>
+            </View>
+            
+            <View style={styles.infoItem}>
+              <Ionicons name="book" size={20} color="#8A2BE2" />
+              <Text style={styles.text}>Materia: Desarrollo Móvil Multiplataforma</Text>
+            </View>
+            
+            <View style={styles.infoItem}>
+              <Ionicons name="person" size={20} color="#8A2BE2" />
+              <Text style={styles.text}>Docente: Alfonso Felipe Lima Cortes</Text>
+            </View>
+            
+            <View style={styles.infoItem}>
+              <Ionicons name="calendar" size={20} color="#8A2BE2" />
+              <Text style={styles.text}>Última actualización: 08 de abril de 2025</Text>
+            </View>
+          </View>
+        </Animatable.View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    flexGrow: 1,
+  },
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#353435",
+    backgroundColor: "#1A1A1A",
     padding: 20,
   },
   card: {
     backgroundColor: "#222316",
-    borderRadius: 50,
+    borderRadius: 30,
     width: "100%",
-    padding: 60,
+    padding: 30,
     alignItems: "center",
     justifyContent: "center",
-    shadowColor: "red",
-    shadowOffset: { width: 10, height: 50 },
-    shadowOpacity: 1,
-    shadowRadius: 70,
-    elevation: 1,
+    shadowColor: "#8A2BE2",
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.3,
+    shadowRadius: 20,
+    elevation: 10,
+    marginVertical: 20,
   },
   profileImage: {
-    width: 300,
-    height: 300,
-    borderRadius: 50,
+    width: 200,
+    height: 200,
+    borderRadius: 100,
     marginBottom: 20,
     borderWidth: 3,
-    borderColor: "purple",
+    borderColor: "#8A2BE2",
   },
   name: {
-    fontSize: 30,
+    fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 10,
-    color: "white",
+    marginBottom: 15,
+    color: "#FFF",
     textAlign: "center",
+    textShadowColor: "rgba(138, 43, 226, 0.5)",
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 10,
+  },
+  socialContainer: {
+    flexDirection: "row",
+    marginBottom: 20,
+  },
+  socialButton: {
+    backgroundColor: "#333",
+    borderRadius: 30,
+    width: 50,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginHorizontal: 10,
+    shadowColor: "#8A2BE2",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 5,
+    elevation: 5,
+  },
+  infoContainer: {
+    width: "100%",
+  },
+  infoItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+    backgroundColor: "rgba(138, 43, 226, 0.1)",
+    padding: 12,
+    borderRadius: 10,
+    borderLeftWidth: 3,
+    borderLeftColor: "#8A2BE2",
   },
   text: {
-    fontSize: 10,
-    textAlign: "center",
-    marginBottom: 5,
-    color: "white",
+    fontSize: 14,
+    marginLeft: 10,
+    color: "#FFF",
+    flexShrink: 1,
   },
 });
