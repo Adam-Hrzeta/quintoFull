@@ -26,14 +26,14 @@ export  default function TabLayout() {
         }),
       }}>
       <Tabs.Screen
-        name="index"
+        name="charactersScreen"
         options={{
           title: 'Personajes',
           tabBarIcon: ({ color }) => <FontAwesome6 name="people-group" size={24} color="black" />,
         }}
       />
       <Tabs.Screen
-        name="scroll"
+        name="CharactersScrollScreen"
         options={{
           title: 'personajes scroll infinito',
           tabBarIcon: ({ color }) => <FontAwesome6 name="people-group" size={24} color="black" />,

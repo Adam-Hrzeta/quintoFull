@@ -4,7 +4,7 @@
 import { LocationsScrollView } from "@/components/rickAndMorty/locations/locationsScrollView";
 
 //para la pantalla de personajes
-export default function LocationsScroll(){
+export default function LocationsScrollScreen(){
     return(
         <LocationsScrollView />
     );

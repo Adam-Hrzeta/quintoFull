@@ -156,7 +156,7 @@ console.log(isLoggedIn);
             }}
           />
           <Drawer.Screen
-            name="about" 
+            name="aboutScreen" 
             options={{
               drawerLabel: 'Acerca del programador',
               title: 'Acerca del programador',

@@ -4,7 +4,7 @@
 import { EpisodesView } from "@/components/rickAndMorty/episodes/episodesView";
 
 //para la pantalla de personajes
-export default function Episodes(){
+export default function EpisodesScreen(){
     return(
         <EpisodesView />
     );

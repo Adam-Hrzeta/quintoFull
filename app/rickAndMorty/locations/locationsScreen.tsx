@@ -5,7 +5,7 @@ import { LocationsView } from "@/components/rickAndMorty/locations/locationsView
 
 
 //para la pantalla de personajes
-export default function Location(){
+export default function LocationsScreen(){
     return(
         <LocationsView />
     );

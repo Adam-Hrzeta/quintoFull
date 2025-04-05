@@ -26,14 +26,14 @@ export default function TabLayout() {
         }),
       }}>
       <Tabs.Screen
-        name="index"
+        name="episodesScreen"
         options={{
           title: 'Episodios',
           tabBarIcon: ({ color }) => <Octicons name="video" size={24} color="black" />,
         }}
       />
       <Tabs.Screen
-        name="scroll"
+        name="episodesScrollScreen"
         options={{
           title: 'Episodios con scroll infinito',
           tabBarIcon: ({ color }) => <Octicons name="video" size={24} color="black" />,

@@ -1,4 +1,4 @@
 import { NotesView } from '@/components/notes/notesView';
 
-export default function Notes() {
+export default function NotesScreen() {
   return (<NotesView/>)}

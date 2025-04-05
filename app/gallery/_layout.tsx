@@ -22,7 +22,7 @@ export default function TabLayout() {
         },
       }}>
       <Tabs.Screen
-        name="gallery"
+        name="galleryScreen"
         options={{
           title: 'Galería',
           tabBarIcon: ({ color }) => <AntDesign name="addusergroup" size={24} color="black" />,

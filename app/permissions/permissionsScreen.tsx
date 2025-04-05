@@ -1,5 +1,5 @@
 import { PermissionView } from "@/components/permissions/permissionsView";
 
-export default function Permissions() {
+export default function PermissionsScreen() {
     return(<PermissionView/>)
 }

@@ -5,7 +5,7 @@ import { EpisodesScrollView } from "@/components/rickAndMorty/episodes/episodesS
 
 
 //para la pantalla de personajes
-export default function EpisodesScroll(){
+export default function EpisodesScrollScreen(){
     return(
         <EpisodesScrollView />
     );

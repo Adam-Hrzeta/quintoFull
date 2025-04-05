@@ -5,19 +5,19 @@ import * as Animatable from "react-native-animatable";
 
 type SocialLink = {
   name: string;
-  icon: "logo-github" | "logo-linkedin" | "mail";
+  icon: "logo-github" | "logo-youtube" | "logo-facebook";
   url: string;
 };
 
 const about_image = require("../assets/images/about_image.jpg");
 
 const socialLinks: SocialLink[] = [
-  { name: "github", icon: "logo-github", url: "https://github.com/tu-usuario" },
-  { name: "linkedin", icon: "logo-linkedin", url: "https://linkedin.com/in/tu-usuario" },
-  { name: "email", icon: "mail", url: "mailto:tu@email.com" },
+  { name: "github", icon: "logo-github", url: "https://github.com/Adam-Hrzeta" },
+  { name: "youtube", icon: "logo-youtube", url: "https://www.youtube.com/@SoundShorty2023" },
+  { name: "email", icon: "logo-facebook", url: "https://www.facebook.com/profile.php?id=100066155683295" },
 ];
 
-export default function About() {
+export default function AboutScreen() {
   const handleSocialPress = (url: string): void => {
     Linking.canOpenURL(url).then(supported => {
       if (supported) {

@@ -4,7 +4,7 @@
 import { CharactersScrollView } from "@/components/rickAndMorty/characters/charactersScrollView";
 
 //para la pantalla de personajes
-export default function CharactersScroll(){
+export default function CharactersScrollScreen(){
     return(
         <CharactersScrollView />
     );

@@ -17,15 +17,12 @@ export default function TabLayout() {
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            position: 'absolute',
-          },
-          default: {},
-        }),
+        tabBarStyle: {
+          display: 'none', // Oculta la barra de pestañas en todas las pantallas
+        },
       }}>
       <Tabs.Screen
-        name="index"
+        name="indexAPI"
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => <Entypo name="home" size={24} color={color} />,
@@ -34,21 +31,21 @@ export default function TabLayout() {
       <Tabs.Screen
         name="locations"
         options={{
-          title: 'Locations',
+          title: 'Ubicaciones',
           tabBarIcon: ({ color }) => <Entypo name="location" size={24} color={color} />,
         }}
       />     
       <Tabs.Screen
         name="characters"
         options={{
-          title: 'Characters',
+          title: 'Personajes',
           tabBarIcon: ({ color }) => <FontAwesome name="users" size={24} color={color} />,
         }}
       />    
       <Tabs.Screen
         name="episodes"
         options={{
-          title: 'Episodes',
+          title: 'Episodios',
           tabBarIcon: ({ color }) => <MaterialIcons name="tv" size={24} color={color} />,
         }}
       />     
