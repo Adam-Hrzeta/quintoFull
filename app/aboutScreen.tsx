@@ -70,12 +70,12 @@ export default function AboutScreen() {
             
             <View style={styles.infoItem}>
               <Ionicons name="person" size={20} color="#8A2BE2" />
-              <Text style={styles.text}>Docente: Alfonso Felipe Lima Cortes</Text>
+              <Text style={styles.text}>Docente: Alfonso Felipe Lima Cortés</Text>
             </View>
             
             <View style={styles.infoItem}>
               <Ionicons name="calendar" size={20} color="#8A2BE2" />
-              <Text style={styles.text}>Última actualización: 08 de abril de 2025</Text>
+              <Text style={styles.text}>Última actualización: 04 de abril de 2025</Text>
             </View>
           </View>
         </Animatable.View>
