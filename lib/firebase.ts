@@ -6,13 +6,13 @@ import * as SecureStore from "expo-secure-store";
 import { Platform } from "react-native";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCM-edYKqmH3ZJVYGbD0uEColY9d4LmTIo",
-  authDomain: "integradora-d5795.firebaseapp.com",
-  projectId: "integradora-d5795",
-  storageBucket: "integradora-d5795.appspot.com",
-  messagingSenderId: "654552369448",
-  appId: "1:654552369448:web:4cd98c0e772753993ee81d",
-  measurementId: "G-1XZG50BE57"
+  apiKey: "AIzaSyCLEC4WO4YOsvC3JqGNBAZiMn3KMwLBSXI",
+  authDomain: "desarrollomovil-c471c.firebaseapp.com",
+  projectId: "desarrollomovil-c471c",
+  storageBucket: "desarrollomovil-c471c.firebasestorage.app",
+  messagingSenderId: "855818697183",
+  appId: "1:855818697183:web:7c2f08ee2c5e64880e2c6a",
+  measurementId: "G-BS3CXDGXSJ"
 };
 
 // Inicializar Firebase
