@@ -9,7 +9,7 @@ type SocialLink = {
   url: string;
 };
 
-const about_image = require("../assets/images/about_image.jpg");
+const about_image = require("../assets/images/about_image.jpg"); // Adjust the path as necessary 
 
 const socialLinks: SocialLink[] = [
   { name: "github", icon: "logo-github", url: "https://github.com/Adam-Hrzeta" },
@@ -17,7 +17,7 @@ const socialLinks: SocialLink[] = [
   { name: "email", icon: "logo-facebook", url: "https://www.facebook.com/profile.php?id=100066155683295" },
 ];
 
-export default function AboutScreen() {
+export default function About() {
   const handleSocialPress = (url: string): void => {
     Linking.canOpenURL(url).then(supported => {
       if (supported) {

@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import { Episode } from "./episodeType";
 
+
 // Definición del tipo Props
 type Props = {
   episode: Episode; // Propiedad
@@ -11,7 +12,7 @@ export function EpisodeCard({ episode }: Props) {
     <View style={styles.card}>
       <Image
         style={styles.image}
-        source={require("C:/Users/adamz/Documents/programacion/Programacion_Movil/cuartoFull/assets/images/episodes.jpg")}
+        source={require("../../../assets/images/episodes.jpg")} 
       />
       <View style={styles.content}>
         <Text style={styles.name}>{episode.name}</Text>

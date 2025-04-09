@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import { Location } from "./locationType"; 
 
+
 // Definición del tipo Props
 type Props = {
   location: Location; // Propiedad
@@ -12,7 +13,7 @@ export function LocationCard({ location }: Props) {
     <View style={styles.card}>
         <Image
           style={styles.image}
-          source={require("C:/Users/adamz/Documents/programacion/Programacion_Movil/cuartoFull/assets/images/locations.webp")}
+          source={require("../../../assets/images/locations.webp")}
         />
       <View style={styles.content}>
         <Text style={styles.name}>{location.name}</Text>

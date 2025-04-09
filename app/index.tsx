@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 51, 102, 0.7)', // Azul UTIM con transparencia
+    backgroundColor: 'rgba(0, 51, 102, 0.7)',
     justifyContent: 'space-between',
     paddingVertical: 50,
   },
